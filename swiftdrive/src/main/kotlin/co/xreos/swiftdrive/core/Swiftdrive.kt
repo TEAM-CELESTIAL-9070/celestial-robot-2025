@@ -1,15 +1,12 @@
 package co.xreos.swiftdrive.core
 
 import co.xreos.swiftdrive.layout.ILayout
-import co.xreos.swiftdrive.unit.IUnit
-import co.xreos.swiftdrive.unit.set.UnitSet
 
-class Swiftdrive {
+class Swiftdrive(block: SwiftdriveConfigurer.() -> Unit) {
     lateinit var layout: ILayout
     lateinit var name: String
-    var unitSet: UnitSet = UnitSet()
 
-    constructor(block: SwiftdriveConfigurer.() -> Unit) {
+    init {
         val configurer = SwiftdriveConfigurer(this)
         configurer.apply(block)
     }

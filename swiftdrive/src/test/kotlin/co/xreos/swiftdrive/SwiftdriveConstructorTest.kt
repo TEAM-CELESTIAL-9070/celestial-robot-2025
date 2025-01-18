@@ -13,13 +13,14 @@ import co.xreos.swiftdrive.layout.RectLayout.Corner.bottomLeft
 import co.xreos.swiftdrive.layout.RectLayout.Corner.bottomRight
 import co.xreos.swiftdrive.unit.DummyUnit
 import kotlin.test.Test
+import kotlin.test.todo
 
 @Suppress("UNUSED_VARIABLE")
 class SwiftdriveConstructorTest {
 
 
     @Test
-    fun `Swiftdrive primary constructor must initialize a driveable Swiftdrive instance`() {
+    fun `Swiftdrive primary constructor must initialize a driveable instance`() {
         val swiftdrive = Swiftdrive {
             name("TestSwiftdrive")
 
@@ -43,6 +44,8 @@ class SwiftdriveConstructorTest {
                 place(DummyUnit("4") to bottomRight)
             }
         }
+
+        TODO()
     }
 
 
