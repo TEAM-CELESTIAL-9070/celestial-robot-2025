@@ -1,13 +1,8 @@
 package co.xreos.swiftdrive.layout
 
-import co.xreos.swiftdrive.type.math.RelativeMarker
+import co.xreos.swiftdrive.math.RelativeMarker
 import co.xreos.swiftdrive.unit.IUnit
 import kotlin.math.atan2
-
-val topLeft = RectLayout.Corner.topLeft
-val topRight = RectLayout.Corner.topRight
-val bottomLeft = RectLayout.Corner.bottomLeft
-val bottomRight = RectLayout.Corner.bottomRight
 
 class RectLayout: ILayout {
     private var width: Double = 0.0
@@ -47,10 +42,10 @@ class RectLayout: ILayout {
 
     fun place(pair: Pair<IUnit, Corner>) {
         when (pair.second) {
-            Corner.topLeft -> topLeft(pair.first)
-            Corner.topRight -> topRight(pair.first)
-            Corner.bottomLeft -> bottomLeft(pair.first)
-            Corner.bottomRight -> bottomRight(pair.first)
+            Corner.TopLeft -> topLeft(pair.first)
+            Corner.TopRight -> topRight(pair.first)
+            Corner.BottomLeft -> bottomLeft(pair.first)
+            Corner.BottomRight -> bottomRight(pair.first)
         }
     }
 
@@ -72,10 +67,14 @@ class RectLayout: ILayout {
         return RelativeMarker(x, y, if(diagonal) atan2(y, x) else 0.0)
     }
 
+    override fun getUnits(): List<IUnit> {
+        return listOfNotNull(topLeftUnit, topRightUnit, bottomLeftUnit, bottomRightUnit)
+    }
+
     enum class Corner {
-        topLeft,
-        topRight,
-        bottomLeft,
-        bottomRight,
+        TopLeft,
+        TopRight,
+        BottomLeft,
+        BottomRight,
     }
 }
